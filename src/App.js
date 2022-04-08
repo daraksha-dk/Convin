@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      {users.loading || (selectedUser.loading && "loading")}
+      {/* {users.loading || (selectedUser.loading && "loading")} */}
       <header>
         {Object.keys(selectedUser.data).length > 0 ? (
           <>
