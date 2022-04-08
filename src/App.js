@@ -13,41 +13,35 @@ function App() {
   const selectedUser = useSelector(selectSelectedUser, shallowEqual);
 
   useEffect(() => {
-    dispatch(mainActions.getUsers(1));
+    dispatch(mainActions.getUsers());
   }, [dispatch]);
-
-  console.log({ users, selectedUser });
 
   return (
     <div className="App">
+      {users.loading || (selectedUser.loading && "loading")}
       <header>
         {Object.keys(selectedUser.data).length > 0 ? (
           <>
-            <p>
-              <span>Img: </span>
-              <span>
-                <img src={selectedUser.data.avatar} alt="selectedProfile" />
-              </span>
-            </p>
+            <img
+              className="avatar"
+              src={selectedUser.data.avatar}
+              alt="selectedProfile"
+            />
 
-            <p>
-              <span>Name: </span>
-              <span>
+            <div className="other-info">
+              <p>
                 {selectedUser.data.first_name +
                   " " +
                   selectedUser.data.last_name}
-              </span>
-            </p>
+              </p>
 
-            <p>
-              <span>Email: </span>
-              <span>{selectedUser.data.email}</span>
-            </p>
+              <p>{selectedUser.data.email}</p>
+            </div>
           </>
         ) : (
           <>
             <h1>
-              Click on any of the boxes below to see the profile of the user
+              Click on any of the boxes below to see the profile of a user
             </h1>
           </>
         )}
