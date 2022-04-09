@@ -57,3 +57,11 @@ body {
     }
   }
 }
+@media screen and (max-width: 460px) {
+  .App {
+    header {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
